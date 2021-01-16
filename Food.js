@@ -1,31 +1,31 @@
 class Food{
     constructor(){
+        this.foodStock =0
+        this.lastFed;
         this.image = loadImage("images/Milk.png");
     }
 
     getFoodStock(){
-           foodStock=database.ref('food');
-        foodStock.on("value",function(data){
-            foodS= data.val()
-        });
+        return this.foodStock;
+        
     }
 
-    updateFoodStock(food){
-        database.ref('food').update({
-           foodS:food
-        })
+    updateFoodStock(foodStock){
+        this.foodStock=foodStock;
     }
 
-    deductFood(x){
-        if(x<=0){
-            x=0
+    deductFood(){
+        if(this.foodStock>0){
+            this.foodStock = this.foodStock-1;
           }
-          else{
-            x=x-1
+        }
+          
+    getFedTime(lastFed){
+            this.lastFed=lastFed;
           }
          
           
-    }
+    
 
     display(){
 
